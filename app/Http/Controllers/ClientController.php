@@ -10,4 +10,19 @@ class ClientController extends Controller
     {
         return view('client.home');
     }
+
+    public function shop()
+    {
+        return view('client.shop');
+    }
+
+    public function panier()
+    {
+        return view('client.panier');
+    }
+
+    public function paiement()
+    {
+        return view('client.paiement');
+    }
 }

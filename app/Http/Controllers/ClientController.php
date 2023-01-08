@@ -25,4 +25,14 @@ class ClientController extends Controller
     {
         return view('client.paiement');
     }
+
+    public function login()
+    {
+        return view('client.login');
+    }
+
+    public function signup()
+    {
+        return view('client.signup');
+    }
 }

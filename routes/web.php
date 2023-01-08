@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [ClientController::class, 'home']);
 Route::get('/shop', [ClientController::class, 'shop']);
 Route::get('panier', [ClientController::class, 'panier']);
-Route::get('paiement', [ClientController::class, 'paiement']);
+Route::get('/paiement', [ClientController::class, 'paiement']);
+Route::get('/login', [ClientController::class, 'login']);
+Route::get('/signup', [ClientController::class, 'signup']);
 
 //require __DIR__ . '/auth.php';

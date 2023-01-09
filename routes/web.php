@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
@@ -35,5 +36,8 @@ Route::get('panier', [ClientController::class, 'panier']);
 Route::get('/paiement', [ClientController::class, 'paiement']);
 Route::get('/login', [ClientController::class, 'login']);
 Route::get('/signup', [ClientController::class, 'signup']);
+
+
+Route::get('/admin', [AdminController::class, 'dashboard']);
 
 //require __DIR__ . '/auth.php';

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,8 @@ Route::get('/signup', [ClientController::class, 'signup']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);
+
+
+Route::get('/addCategory', [CategoryController::class, 'addCategory']);
 
 //require __DIR__ . '/auth.php';

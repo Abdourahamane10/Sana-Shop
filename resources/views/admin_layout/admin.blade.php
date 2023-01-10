@@ -371,6 +371,8 @@
     <script src="backend/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="backend/dist/js/demo.js"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

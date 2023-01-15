@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +45,7 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 
 
 Route::get('/addCategory', [CategoryController::class, 'addCategory']);
+Route::get('/addSlider', [SliderController::class, 'addSlider']);
+Route::get('/addProduct', [ProductController::class, 'addProduct']);
 
 //require __DIR__ . '/auth.php';

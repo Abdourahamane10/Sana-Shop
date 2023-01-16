@@ -10,4 +10,9 @@ class SliderController extends Controller
     {
         return view('admin.addSlider');
     }
+
+    public function sliders()
+    {
+        return view('admin.sliders');
+    }
 }

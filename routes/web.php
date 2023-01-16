@@ -39,6 +39,7 @@ Route::get('panier', [ClientController::class, 'panier']);
 Route::get('/paiement', [ClientController::class, 'paiement']);
 Route::get('/login', [ClientController::class, 'login']);
 Route::get('/signup', [ClientController::class, 'signup']);
+Route::get('/orders', [ClientController::class, 'orders']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);
@@ -54,5 +55,6 @@ Route::get('/sliders', [SliderController::class, 'sliders']);
 
 Route::get('/addProduct', [ProductController::class, 'addProduct']);
 Route::get('/products', [ProductController::class, 'products']);
+
 
 //require __DIR__ . '/auth.php';

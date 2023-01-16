@@ -1,7 +1,7 @@
 @extends('admin_layout.admin')
 
 @section('title')
-Categories
+Sliders
 @endsection
 
 @section('style')

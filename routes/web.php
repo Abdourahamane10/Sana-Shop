@@ -49,6 +49,7 @@ Route::get('/categories', [CategoryController::class, 'categories']);
 
 
 Route::get('/addSlider', [SliderController::class, 'addSlider']);
+Route::get('/sliders', [SliderController::class, 'sliders']);
 
 
 Route::get('/addProduct', [ProductController::class, 'addProduct']);

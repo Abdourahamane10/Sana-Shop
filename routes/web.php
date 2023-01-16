@@ -45,7 +45,12 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 
 
 Route::get('/addCategory', [CategoryController::class, 'addCategory']);
+Route::get('/categories', [CategoryController::class, 'categories']);
+
+
 Route::get('/addSlider', [SliderController::class, 'addSlider']);
+
+
 Route::get('/addProduct', [ProductController::class, 'addProduct']);
 
 //require __DIR__ . '/auth.php';

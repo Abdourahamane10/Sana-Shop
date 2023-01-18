@@ -33,7 +33,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
+                            <a href="{{ url('/admin') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dashboard v1</p>
                             </a>
@@ -51,7 +51,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/forms/addcategory.html" class="nav-link">
+                            <a href="{{ url('/addCategory') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Add category</p>
                             </a>
@@ -59,7 +59,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/tables/categories.html" class="nav-link">
+                            <a href="{{ url('/categories') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Categories</p>
                             </a>
@@ -77,7 +77,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/forms/addslider.html" class="nav-link">
+                            <a href="{{ url('/addSlider') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Add slider</p>
                             </a>
@@ -85,7 +85,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/tables/sliders.html" class="nav-link">
+                            <a href="{{ url('/sliders') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Sliders</p>
                             </a>
@@ -103,7 +103,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/forms/addproduct.html" class="nav-link">
+                            <a href="{{ url('/addProduct') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Add product</p>
                             </a>
@@ -111,7 +111,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/tables/products.html" class="nav-link">
+                            <a href="{{ url('/products') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Products</p>
                             </a>
@@ -129,7 +129,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="backend/pages/tables/orders.html" class="nav-link">
+                            <a href="{{ url('/orders') }}" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Orders</p>
                             </a>

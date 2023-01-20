@@ -35,22 +35,48 @@ Add category
                         <div class="card-header">
                             <h3 class="card-title">Add category</small></h3>
                         </div>
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                            {{ Session::put('status', null) }}
+                        </div>
+                        @endif
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        {{-- <form> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\CategoryController@saveCategory',
+                            'method' => 'POST', 'enctype' => 'multipart/form-data'])
+                            !!}
+                            {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Category name</label>
-                                    <input type="text" name="category_name" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter category">
+                                    {{-- <labelfor="exampleInputEmail1">Categoryname</label> --}}
+                                        {{ Form::label('', 'Category name', ['for' => 'exampleInputEmail1']) }}
+                                        {{-- <input type="text" name="category_name" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Enter category"> --}}
+                                        {{
+                                        Form::text('category_name','',['class'=>'form-control','id'=>'exampleInputEmail1','placeholder'=>'Entercategory'])
+                                        }}
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                <input type="submit" class="btn btn-primary" value="Save">
+                                {{-- <inputtype="submit"class="btnbtn-primary"value="Save"> --}}
+                                    {{ Form::submit('save', ['class' => 'btn btn-primary']) }}
                             </div>
-                        </form>
+                            {{--
+                        </form> --}}
+                        {!! Form::close() !!}
                     </div>
                     <!-- /.card -->
                 </div>

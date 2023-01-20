@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class CategoryController extends Controller
 {
@@ -13,6 +15,16 @@ class CategoryController extends Controller
 
     public function categories()
     {
-        return view('admin.categories');
+        $categories = Category::all();
+        return view('admin.categories')->with('categories', $categories);
+    }
+
+    public function saveCategory(Request $request)
+    {
+        $this->validate($request, ['category_name' => 'Required|unique:categories']);
+        $category = new Category();
+        $category->category_name = $request->input('category_name');
+        $category->save();
+        return back()->with('status', 'La catégorie ' . $category->category_name . ' a été ajouté avec succès !!');
     }
 }

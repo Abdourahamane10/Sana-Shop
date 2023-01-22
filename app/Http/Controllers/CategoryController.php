@@ -27,4 +27,19 @@ class CategoryController extends Controller
         $category->save();
         return back()->with('status', 'La catégorie ' . $category->category_name . ' a été ajouté avec succès !!');
     }
+
+    public function editCategory($id)
+    {
+        $category = Category::find($id);
+        return view('admin.editCategory')->with('category', $category);
+    }
+
+    public function updateCategory(Request $request)
+    {
+        $this->validate($request, ['category_name' => 'Required']);
+        $category = Category::find($request->input('id'));
+        $category->category_name = $request->input('category_name');
+        $category->update();
+        return redirect('/categories')->with('status', 'La catégorie ' . $category->category_name . ' a été mis à jour avec succès !!');
+    }
 }

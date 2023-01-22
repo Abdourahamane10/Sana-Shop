@@ -13,6 +13,7 @@ Categories
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
+{{ Form::hidden('', $increment = 1) }}
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -40,6 +41,12 @@ Categories
                         <div class="card-header">
                             <h3 class="card-title">All categories</h3>
                         </div>
+                        @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                            {{ Session::put('status', null) }}
+                        </div>
+                        @endif
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -51,28 +58,20 @@ Categories
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($categories as $category)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Internet
-                                            Explorer 4.0
+                                        <td>{{ $increment }}</td>
+                                        <td>{{ $category->category_name }}
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                            <a href="{{url('/editCategory/'.$category->id)}}" class="btn btn-primary"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger"><i
                                                     class="nav-icon fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger"><i
-                                                    class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                    {{ Form::hidden('', $increment = $increment + 1 ) }}
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

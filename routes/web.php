@@ -48,6 +48,9 @@ Route::get('/admin', [AdminController::class, 'dashboard']);
 Route::get('/addCategory', [CategoryController::class, 'addCategory']);
 Route::get('/categories', [CategoryController::class, 'categories']);
 Route::post('/saveCategory', [CategoryController::class, 'saveCategory']);
+Route::get('/editCategory/{id}', [CategoryController::class, 'editCategory']);
+Route::post('/updateCategory', [CategoryController::class, 'updateCategory']);
+
 
 
 Route::get('/addSlider', [SliderController::class, 'addSlider']);

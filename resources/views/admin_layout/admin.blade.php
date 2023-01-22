@@ -59,6 +59,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    @yield('scripts')
 
     <!-- jQuery -->
     <script src="{{ asset ('backend/plugins/jquery/jquery.min..js') }}"></script>
@@ -96,7 +97,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset ('backend/dist/js/demo..js') }}"></script>
 
-    @yield('scripts')
 </body>
 
 </html>

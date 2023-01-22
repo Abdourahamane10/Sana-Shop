@@ -40,6 +40,13 @@ class CategoryController extends Controller
         $category = Category::find($request->input('id'));
         $category->category_name = $request->input('category_name');
         $category->update();
-        return redirect('/categories')->with('status', 'La catégorie ' . $category->category_name . ' a été mis à jour avec succès !!');
+        return redirect('/categories')->with('status', 'La catégorie ' . $category->category_name . ' a été mise à jour avec succès !!');
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return back()->with('status', 'La catégorie ' . $category->category_name . ' a été supprimée avec succès !!');
     }
 }

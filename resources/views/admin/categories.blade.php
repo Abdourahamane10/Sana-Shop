@@ -66,8 +66,8 @@ Categories
                                         <td>
                                             <a href="{{url('/editCategory/'.$category->id)}}" class="btn btn-primary"><i
                                                     class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger"><i
-                                                    class="nav-icon fas fa-trash"></i></a>
+                                            <a href="{{url('/deleteCategory/'.$category->id)}}" id="delete"
+                                                class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     {{ Form::hidden('', $increment = $increment + 1 ) }}
@@ -107,7 +107,6 @@ Categories
 
 <script src="backend/dist/js/bootbox.min.js"></script>
 <!-- page script -->
-
 <script>
     $(document).on("click", "#delete", function(e){
   e.preventDefault();
@@ -137,4 +136,5 @@ Categories
     });
   });
 </script>
+
 @endsection

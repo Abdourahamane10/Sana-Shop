@@ -16,7 +16,8 @@ class ProductController extends Controller
 
     public function products()
     {
-        return view('admin.products');
+        $products = Product::all();
+        return view('admin.products')->with('products', $products);
     }
 
     public function saveProduct(Request $request)

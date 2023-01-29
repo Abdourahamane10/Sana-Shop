@@ -61,6 +61,8 @@ Route::get('/sliders', [SliderController::class, 'sliders']);
 Route::get('/addProduct', [ProductController::class, 'addProduct']);
 Route::get('/products', [ProductController::class, 'products']);
 Route::post('/saveProduct', [ProductController::class, 'saveProduct']);
+Route::get('/editProduct/{id}', [ProductController::class, 'editProduct']);
+Route::post('/updateProduct', [ProductController::class, 'updateProduct']);
 
 
 //require __DIR__ . '/auth.php';

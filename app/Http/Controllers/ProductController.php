@@ -46,4 +46,15 @@ class ProductController extends Controller
 
         return back()->with('status', 'Le product ' . $product->product_name . ' a été ajouté avec succès !!');
     }
+
+    public function editProduct($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all()->pluck('category_name', 'category_name');
+        return view('admin.editProduct')->with('product', $product)->with('categories', $categories);
+    }
+
+    public function updateProduct(Request $request)
+    {
+    }
 }

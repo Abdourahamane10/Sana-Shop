@@ -59,6 +59,7 @@ Edit product
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
+                                    {{ Form::hidden('id', $product->id) }}
                                     {{-- <labelfor="exampleInputEmail1">Productname</label> --}}
                                         {{ Form::label('', 'Product name', ['for' => 'exampleInputEmail1']) }}
                                         {{--<input type="text" name="product_name" class="form-control"
@@ -72,7 +73,7 @@ Edit product
                                         {{ Form::label('', 'Product price', ['for' => 'exampleInputEmail1']) }}
                                         {{--<input type="number" name="product_price" class="form-control"
                                             id="exampleInputEmail1" placeholder="Enter product price" min="1">--}}
-                                        {{ Form::text('product_price', '$ '. $product->product_price, ['class' =>
+                                        {{ Form::number('product_price', $product->product_price, ['class' =>
                                         'form-control', 'id' =>
                                         'exampleInputEmail1', 'placeholder' => 'Enter product price']) }}
                                 </div>

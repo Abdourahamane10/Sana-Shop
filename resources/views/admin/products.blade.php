@@ -68,7 +68,8 @@ Products
                                         <td> {{'$ '. $product->product_price }}</td>
                                         <td>
                                             <a href="#" class="btn btn-success">Unactivate</a>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                            <a href="{{ url('/editProduct/'.$product->id) }}" class="btn btn-primary"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger"><i
                                                     class="nav-icon fas fa-trash"></i></a>
                                         </td>

@@ -76,8 +76,8 @@ Products
                                             <a href="#" class="btn btn-success">Unactivate</a>
                                             <a href="{{ url('/editProduct/'.$product->id) }}" class="btn btn-primary"><i
                                                     class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger"><i
-                                                    class="nav-icon fas fa-trash"></i></a>
+                                            <a href="{{ url('/deleteProduct/'.$product->id) }}" id="delete"
+                                                class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     {{ Form::hidden('', $increment = $increment + 1) }}

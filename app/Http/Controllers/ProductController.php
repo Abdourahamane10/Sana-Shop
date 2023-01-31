@@ -43,6 +43,7 @@ class ProductController extends Controller
         $product->product_price = $request->input('product_price');
         $product->product_category = $request->input('product_category');
         $product->product_image = $fileNameToStore;
+        $product->status = 1;
         $product->save();
 
         return back()->with('status', 'Le product ' . $product->product_name . ' a été ajouté avec succès !!');
@@ -93,5 +94,13 @@ class ProductController extends Controller
         }
         $product->delete();
         return back()->with('status', 'Le produit ' . $product->product_name . ' a été supprimé avec succès !!');
+    }
+
+    public function activerProduct($id)
+    {
+        $product = Product::find($id);
+        $product->status = 1;
+        $product->save();
+        return back();
     }
 }

@@ -73,7 +73,13 @@ Products
                                         <td> {{ $product->product_category }}</td>
                                         <td> {{'$ '. $product->product_price }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-success">Unactivate</a>
+                                            @if ($product->status != 0)
+                                            <a href="{{ url('/desactiverProduct/'.$product->id) }}"
+                                                class="btn btn-success">Désactiver</a>
+                                            @else
+                                            <a href="{{ url('/activerProduct/'.$product->id) }}"
+                                                class="btn btn-warning">Activer</a>
+                                            @endif
                                             <a href="{{ url('/editProduct/'.$product->id) }}" class="btn btn-primary"><i
                                                     class="nav-icon fas fa-edit"></i></a>
                                             <a href="{{ url('/deleteProduct/'.$product->id) }}" id="delete"

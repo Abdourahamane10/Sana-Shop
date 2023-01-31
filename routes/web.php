@@ -64,5 +64,6 @@ Route::post('/saveProduct', [ProductController::class, 'saveProduct']);
 Route::get('/editProduct/{id}', [ProductController::class, 'editProduct']);
 Route::post('/updateProduct', [ProductController::class, 'updateProduct']);
 Route::get('/deleteProduct/{id}', [ProductController::class, 'deleteProduct']);
+Route::get('/activerProduct/{id}', [ProductController::class, 'activerProduct']);
 
 //require __DIR__ . '/auth.php';

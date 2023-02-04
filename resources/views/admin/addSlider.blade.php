@@ -36,37 +36,79 @@ Add slider
                         <div class="card-header">
                             <h3 class="card-title">Add slider</h3>
                         </div>
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                            {{ Session::put('status', null) }}
+                        </div>
+                        @endif
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        {{-- <form> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\SliderController@saveSlider',
+                            'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
+                            {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Slider description 1</label>
-                                    <input type="text" name="description1" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter slider description">
+                                    {{-- <labelfor="exampleInputEmail1">Sliderdescription1</label> --}}
+                                        {{ Form::label('', 'Description one', ['for' => 'exampleInputEmail1']) }}
+
+                                        {{--<input type="text" name="description1" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Enter slider description">--}}
+                                        {{ Form::text('description1', '', ['class' => 'form-control', 'id' =>
+                                        'exampleInputEmail1', 'placeholder' => 'Enter slider description']) }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Slider description 2</label>
-                                    <input type="text" name="description2" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter slider description">
+                                    {{-- <labelfor="exampleInputEmail1">Sliderdescription2</label> --}}
+                                        {{ Form::label('', 'Description two', ['for' => 'exampleInputEmail1']) }}
+
+                                        {{--<input type="text" name="description2" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Enter slider description">--}}
+                                        {{ Form::text('description2', '', ['class' => 'form-control', 'id' =>
+                                        'exampleInputEmail1', 'placeholder' => 'Enter slider description']) }}
                                 </div>
-                                <label for="exampleInputFile">Slider image</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                {{-- <labelfor="exampleInputFile">Sliderimage</label> --}}
+                                    {{-- {{ Form::label('', 'Slider image', ['for' => 'exampleInputFile']) }} --}}
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            {{-- <inputtype="file"class="custom-file-input"id="exampleInputFile"> --}}
+
+                                                {{ Form::file('slider_image', ['class' => 'custom-file-input',
+                                                'id'
+                                                =>
+                                                'exampleInputFile']) }}
+
+                                                {{-- <labelclass="custom-file-label"for="exampleInputFile">
+                                                    Choosefile</label> --}}
+
+                                                    {{ Form::label('', 'Choose file', ['for' => 'exampleInputFile',
+                                                    'class' =>
+                                                    'custom-file-label']) }}
+
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
                                     </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <!-- <button type="submit" class="btn btn-warning">Submit</button> -->
-                                <input type="submit" class="btn btn-warning" value="Save">
+                                {{-- <inputtype="submit"class="btnbtn-warning"value="Save"> --}}
+                                    {{ Form::submit('save', ['class' => 'btn btn-warning']) }}
                             </div>
-                        </form>
+                            {{--
+                        </form> --}}
+                        {!! Form::close() !!}
                     </div>
                     <!-- /.card -->
                 </div>
@@ -87,8 +129,8 @@ Add slider
 
 @section('scripts')
 <!-- jquery-validation -->
-<script src="../../plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
+<script src="backend/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="backend/plugins/jquery-validation/additional-methods.min.js"></script>
 
 <script>
     $(function () {

@@ -56,6 +56,7 @@ Route::get('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory']
 
 Route::get('/addSlider', [SliderController::class, 'addSlider']);
 Route::get('/sliders', [SliderController::class, 'sliders']);
+Route::post('/saveSlider', [SliderController::class, 'saveSlider']);
 
 
 Route::get('/addProduct', [ProductController::class, 'addProduct']);

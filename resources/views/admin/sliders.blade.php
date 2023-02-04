@@ -32,6 +32,7 @@ Sliders
     </section>
 
     <!-- Main content -->
+    {{ Form::hidden('', $increment = 1) }}
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -53,17 +54,17 @@ Sliders
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($sliders as $slider)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $increment }}</td>
                                         <td>
-                                            <img src="backend/dist/img/user2-160x160.jpg"
+                                            <img src="storage/slider_images/{{ $slider->slider_image }}"
                                                 style="height : 50px; width : 50px" class="img-circle elevation-2"
                                                 alt="User Image">
                                         </td>
-                                        <td>Internet
-                                            Explorer 4.0
+                                        <td>{{ $slider->description1 }}
                                         </td>
-                                        <td>5</td>
+                                        <td>{{ $slider->description2 }}</td>
                                         <td>
                                             <a href="#" class="btn btn-warning">Activate</a>
                                             <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
@@ -71,24 +72,8 @@ Sliders
                                                     class="nav-icon fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <img src="backend/dist/img/user2-160x160.jpg"
-                                                style="height : 50px; width : 50px" class="img-circle elevation-2"
-                                                alt="User Image">
-                                        </td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="#" class="btn btn-success">Unactivate</a>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger"><i
-                                                    class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                    {{ $increment = $increment + 1 }}
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

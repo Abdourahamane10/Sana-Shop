@@ -41,6 +41,12 @@ Sliders
                         <div class="card-header">
                             <h3 class="card-title">All Sliders</h3>
                         </div>
+                        @if (Session::has('status'))
+                        <div class="aler alert-success">
+                            {{ Session::get('status') }}
+                            {{ Session::put('status', null) }}
+                        </div>
+                        @endif
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -67,7 +73,8 @@ Sliders
                                         <td>{{ $slider->description2 }}</td>
                                         <td>
                                             <a href="#" class="btn btn-warning">Activate</a>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                            <a href="{{ url('/editSlider/'.$slider->id) }}" class="btn btn-primary"><i
+                                                    class="nav-icon fas fa-edit"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger"><i
                                                     class="nav-icon fas fa-trash"></i></a>
                                         </td>

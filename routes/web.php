@@ -57,6 +57,8 @@ Route::get('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory']
 Route::get('/addSlider', [SliderController::class, 'addSlider']);
 Route::get('/sliders', [SliderController::class, 'sliders']);
 Route::post('/saveSlider', [SliderController::class, 'saveSlider']);
+Route::get('/editSlider/{id}', [SliderController::class, 'editSlider']);
+Route::post('/updateSlider', [SliderController::class, 'updateSlider']);
 
 
 Route::get('/addProduct', [ProductController::class, 'addProduct']);

@@ -80,7 +80,7 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $slider->status = 1;
-        $slider->save();
+        $slider->update();
         return redirect('/sliders');
     }
 
@@ -88,7 +88,7 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $slider->status = 0;
-        $slider->save();
+        $slider->update();
         return redirect('/sliders');
     }
 

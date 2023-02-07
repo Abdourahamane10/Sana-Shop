@@ -75,4 +75,20 @@ class SliderController extends Controller
         $slider->update();
         return redirect('/sliders')->with('status', "Le slider a été mis à jour avec succès !!");
     }
+
+    public function activerSlider($id)
+    {
+        $slider = Slider::find($id);
+        $slider->status = 1;
+        $slider->save();
+        return redirect('/sliders');
+    }
+
+    public function desactiverSlider($id)
+    {
+        $slider = Slider::find($id);
+        $slider->status = 0;
+        $slider->save();
+        return redirect('/sliders');
+    }
 }

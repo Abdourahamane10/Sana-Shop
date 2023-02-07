@@ -91,4 +91,12 @@ class SliderController extends Controller
         $slider->save();
         return redirect('/sliders');
     }
+
+    public function deleteSlider($id)
+    {
+        $slider = Slider::find($id);
+        $slider->delete();
+        Storage::delete('public/slider_images/' . $slider->slider_image);
+        return back()->with('status', 'Le slider a été supprimé avec succès !!');
+    }
 }

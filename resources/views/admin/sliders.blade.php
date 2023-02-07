@@ -72,7 +72,13 @@ Sliders
                                         </td>
                                         <td>{{ $slider->description2 }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-warning">Activate</a>
+                                            @if ($slider->status != 0)
+                                            <a href="{{ url('/desactiverSlider/'.$slider->id) }}"
+                                                class="btn btn-success">Désactiver</a>
+                                            @else
+                                            <a href="{{ url('/activerSlider/'.$slider->id) }}"
+                                                class="btn btn-warning">Activer</a>
+                                            @endif
                                             <a href="{{ url('/editSlider/'.$slider->id) }}" class="btn btn-primary"><i
                                                     class="nav-icon fas fa-edit"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger"><i

@@ -100,7 +100,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->status = 1;
-        $product->save();
+        $product->update();
         return back();
     }
 
@@ -108,7 +108,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->status = 0;
-        $product->save();
+        $product->update();
         return back();
     }
 }

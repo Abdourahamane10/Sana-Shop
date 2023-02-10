@@ -99,8 +99,8 @@ Edit category
 
 @section('scripts')
 <!-- jquery-validation -->
-<script src="{{ asset('backend/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('backend/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+<script src="backend/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="backend/plugins/jquery-validation/additional-methods.min.js"></script>
 
 <script>
     $(function () {

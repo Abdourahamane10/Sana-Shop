@@ -35,45 +35,83 @@ Add product
                         <div class="card-header">
                             <h3 class="card-title">Add product</h3>
                         </div>
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                            {{ Session::put('status', null) }}
+                        </div>
+                        @endif
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm">
+                        {{-- <form id="quickForm"> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\ProductController@saveProduct',
+                            'method' => 'POST', 'enctype' => 'multipart/form-data'])
+                            !!}
+                            {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Product name</label>
-                                    <input type="text" name="product_name" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter product name">
+                                    {{-- <labelfor="exampleInputEmail1">Productname</label> --}}
+                                        {{ Form::label('', 'Product name', ['for' => 'exampleInputEmail1']) }}
+                                        {{--<input type="text" name="product_name" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Enter product name">--}}
+                                        {{ Form::text('product_name', '', ['class' => 'form-control', 'id' =>
+                                        'exampleInputEmail1', 'placeholder' => 'Enter product name']) }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Product price</label>
-                                    <input type="number" name="product_price" class="form-control"
-                                        id="exampleInputEmail1" placeholder="Enter product price" min="1">
+                                    {{-- <labelfor="exampleInputEmail1">Productprice</label> --}}
+                                        {{ Form::label('', 'Product price', ['for' => 'exampleInputEmail1']) }}
+                                        {{--<input type="number" name="product_price" class="form-control"
+                                            id="exampleInputEmail1" placeholder="Enter product price" min="1">--}}
+                                        {{ Form::number('product_price', '', ['class' => 'form-control', 'id' =>
+                                        'exampleInputEmail1', 'placeholder' => 'Enter product price']) }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product category</label>
-                                    <select class="form-control select2" style="width: 100%;">
+                                    {{-- <label>Productcategory</label> --}}
+                                    {{ Form::label('', 'Product category') }}
+                                    {{--<select class="form-control select2" style="width: 100%;">
                                         <option selected="selected">Fruit</option>
                                         <option>Juice</option>
                                         <option>Vegetable</option>
-                                    </select>
+                                    </select>--}}
+                                    {{ Form::select('product_category', $categories, null, ['placeholder' => 'Select
+                                    category', 'class' => 'form-control select2']) }}
                                 </div>
-                                <label for="exampleInputFile">Product image</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                {{-- <labelfor="exampleInputFile">Productimage</label> --}}
+                                    {{ Form::label('', 'Product image', ['for' => 'exampleInputFile']) }}
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            {{-- <inputtype="file"class="custom-file-input"id="exampleInputFile"> --}}
+                                                {{ Form::file('product_image', ['class' => 'custom-file-input', 'id' =>
+                                                'exampleInputFile']) }}
+                                                {{-- <labelclass="custom-file-label"for="exampleInputFile">
+                                                    Choosefile</label> --}}
+                                                    {{ Form::label('', 'Choose file', ['class'=> 'custom-file-label',
+                                                    'for' =>
+                                                    'exampleInputFile']) }}
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
                                     </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <!-- <button type="submit" class="btn btn-success">Submit</button> -->
-                                <input type="submit" class="btn btn-success" value="Save">
+                                {{-- <inputtype="submit"class="btnbtn-success"value="Save"> --}}
+                                    {{ Form::submit('save', ['class' => 'btn btn-success']) }}
                             </div>
-                        </form>
+                            {!! Form::close() !!}
+                            {{--
+                        </form> --}}
                     </div>
                     <!-- /.card -->
                 </div>
@@ -94,8 +132,8 @@ Add product
 
 @section('scripts')
 <!-- jquery-validation -->
-<script src="../../plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
+<script src="backend/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="backend/plugins/jquery-validation/additional-methods.min.js"></script>
 
 <script>
     $(function () {

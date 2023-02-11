@@ -111,4 +111,11 @@ class ProductController extends Controller
         $product->update();
         return back();
     }
+
+    public function selectParCat($category_name)
+    {
+        $products = Product::where('product_category', '=', $category_name)->where('status', '=', 1)->get();
+        $categories = Category::all();
+        return view('client.shop')->with('products', $products)->with('categories', $categories);
+    }
 }

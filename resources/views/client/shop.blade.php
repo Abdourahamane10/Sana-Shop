@@ -6,7 +6,7 @@ Shop
 @section('content')
 <!-- start content -->
 
-<div class="hero-wrap hero-bread" style="background-image: url('frontend/images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('{{ asset('frontend/images/bg_1.jpg') }}');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -23,9 +23,12 @@ Shop
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
                 <ul class="product-category">
-                    <li><a href="#" class="active">All</a></li>
+                    <li><a href="{{ url('/shop') }}" class="{{ request()->is('shop') ? 'active' : '' }}">All</a></li>
                     @foreach ($categories as $category)
-                    <li><a href="#">{{ $category->category_name }}</a></li>
+                    <li><a href="{{ url('/selectParCat/'.$category->category_name) }}" class=" {{
+                            request()->is('selectParCat/'.$category->category_name) ? 'active' : '' }}">{{
+                            $category->category_name
+                            }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -42,7 +45,7 @@ Shop
                         <h3><a href="#">{{ $product->product_name }}</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc">${{ $product->product_price }}</span></p>
+                                <p class="price"><span>${{ $product->product_price }}</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">

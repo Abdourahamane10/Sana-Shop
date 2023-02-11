@@ -72,5 +72,6 @@ Route::post('/updateProduct', [ProductController::class, 'updateProduct']);
 Route::get('/deleteProduct/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('/activerProduct/{id}', [ProductController::class, 'activerProduct']);
 Route::get('/desactiverProduct/{id}', [ProductController::class, 'desactiverProduct']);
+Route::get('/selectParCat/{category_name}', [ProductController::class, 'selectParCat']);
 
 //require __DIR__ . '/auth.php';

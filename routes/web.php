@@ -40,6 +40,7 @@ Route::get('/paiement', [ClientController::class, 'paiement']);
 Route::get('/login', [ClientController::class, 'login']);
 Route::get('/signup', [ClientController::class, 'signup']);
 Route::get('/orders', [ClientController::class, 'orders']);
+Route::get('/ajouterAuPanier/{id}', [ClientController::class, 'ajouterAuPanier']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);

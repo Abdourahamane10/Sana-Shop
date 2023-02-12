@@ -48,6 +48,16 @@ class ClientController extends Controller
         return view('client.panier', ['products' => $cart->items]);
     }
 
+    public function modifierQuantite(Request $request, $id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($request->id, $request->quantity);
+        Session::put('cart', $cart);
+
+        return back();
+    }
+
     public function paiement()
     {
         return view('client.paiement');

@@ -51,13 +51,16 @@ Panier
                                 </td>
 
                                 <td class="price">${{ $product['product_price'] }}</td>
-                                <form action="">
+                                <form action="{{ url('/modifierQuantite/'.$product['product_id']) }}" method="Post">
+                                    {{ csrf_field() }}
                                     <td class="quantity">
                                         <div class="input-group mb-3">
                                             <input type="number" name="quantity"
                                                 class="quantity form-control input-number" value="{{ $product['qty'] }}"
                                                 min="1" max="100">
                                         </div>
+                                        <input type="submit" value="Valider" class="btn btn-success">
+                                    </td>
                                 </form>
 
 
@@ -124,7 +127,7 @@ Panier
                     <hr>
                     <p class="d-flex total-price">
                         <span>Total</span>
-                        <span>$17.60</span>
+                        <span>${{ Session::has('cart') ? Session::get('cart')->totalPrice : '0'}}</span>
                     </p>
                 </div>
                 <p><a href="{{ url('/paiement') }}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

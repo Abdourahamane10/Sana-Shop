@@ -37,7 +37,9 @@ Panier
                         <tbody>
                             @foreach ($products as $product)
                             <tr class="text-center">
-                                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                <td class="product-remove"><a
+                                        href="{{ url('/supprimerDuPanier/'.$product['product_id']) }}"><span
+                                            class="ion-ios-close"></span></a></td>
 
                                 <td class="image-prod">
                                     <div class="img"

@@ -42,6 +42,7 @@ Route::get('/signup', [ClientController::class, 'signup']);
 Route::get('/orders', [ClientController::class, 'orders']);
 Route::get('/ajouterAuPanier/{id}', [ClientController::class, 'ajouterAuPanier']);
 Route::post('/modifierQuantite/{id}', [ClientController::class, 'modifierQuantite']);
+Route::get('/supprimerDuPanier/{id}', [ClientController::class, 'supprimerDuPanier']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);

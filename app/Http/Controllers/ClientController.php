@@ -25,7 +25,7 @@ class ClientController extends Controller
         return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
 
-    public function ajaouterAuPanier($id)
+    public function ajouterAuPanier($id)
     {
         $product = Product::find($id);
 

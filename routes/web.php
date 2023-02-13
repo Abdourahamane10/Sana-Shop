@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [ClientController::class, 'home']);
 Route::get('/shop', [ClientController::class, 'shop']);
-Route::get('panier', [ClientController::class, 'panier']);
+Route::get('/panier', [ClientController::class, 'panier']);
 Route::get('/paiement', [ClientController::class, 'paiement']);
 Route::get('/login', [ClientController::class, 'login']);
 Route::get('/signup', [ClientController::class, 'signup']);
@@ -44,6 +44,8 @@ Route::get('/ajouterAuPanier/{id}', [ClientController::class, 'ajouterAuPanier']
 Route::post('/modifierQuantite/{id}', [ClientController::class, 'modifierQuantite']);
 Route::get('/supprimerDuPanier/{id}', [ClientController::class, 'supprimerDuPanier']);
 Route::post('/creerCompte', [ClientController::class, 'creerCompte']);
+Route::post('/accederCompte', [ClientController::class, 'accederCompte']);
+Route::get('/logout', [ClientController::class, 'logout']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);

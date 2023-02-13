@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
@@ -42,7 +43,7 @@ class ClientController extends Controller
     public function panier()
     {
         if (!Session::has('cart')) {
-            return redirect('/cart');
+            return view('client.panier');
         }
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -79,12 +80,22 @@ class ClientController extends Controller
         if (!Session::has('client')) {
             return view('client.login');
         }
+        if (!Session::has('cart')) {
+            return view('client.panier');
+        }
+
         return view('client.paiement');
     }
 
     public function login()
     {
         return view('client.login');
+    }
+
+    public function logout()
+    {
+        Session::forget('client');
+        return back();
     }
 
     public function signup()
@@ -100,6 +111,22 @@ class ClientController extends Controller
         $client->password = bcrypt($request->input('password'));
         $client->save();
         return back()->with('status', 'Votre compte a été crée avec succès !!');
+    }
+
+    public function accederCompte(Request $request)
+    {
+        $this->validate($request, ['email' => 'required', 'password' => 'required']);
+        $client = Client::where('email', '=', $request->input('email'))->first();
+        if ($client) {
+            if (Hash::check($request->input('password'), $client->password)) {
+                Session::put('client', $client);
+                return redirect('/shop');
+            } else {
+                return back()->with('status', 'Le mot de passe ne correspond pas à l\'adresse mail');
+            }
+        } else {
+            return back()->with('status', 'Aucun compte correspond à cet adresse mail');
+        }
     }
 
     public function orders()

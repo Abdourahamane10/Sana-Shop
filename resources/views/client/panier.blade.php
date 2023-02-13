@@ -34,6 +34,7 @@ Panier
                                 <th>Total</th>
                             </tr>
                         </thead>
+                        @if (Session::has('cart'))
                         <tbody>
                             @foreach ($products as $product)
                             <tr class="text-center">
@@ -72,6 +73,8 @@ Panier
                             </tr><!-- END TR-->
                             @endforeach
                         </tbody>
+                        @else
+                        @endif
                     </table>
                 </div>
             </div>

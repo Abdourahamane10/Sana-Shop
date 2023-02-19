@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -48,6 +49,23 @@ class ClientController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         return view('client.panier', ['products' => $cart->items]);
+    }
+
+    public function payer(Request $request)
+    {
+
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        $order = new Order();
+        $order->names = $request->input('name');
+        $order->adresse = $request->input('address');
+        $order->panier = serialize($cart);
+        $order->save();
+
+        Session::forget('cart');
+
+        return redirect('/panier')->with('status', 'Votre commande a été effectué avec succès !!');
     }
 
     public function modifierQuantite(Request $request, $id)

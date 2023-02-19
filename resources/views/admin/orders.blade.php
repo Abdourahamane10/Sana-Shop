@@ -46,6 +46,7 @@ Orders
                                 <thead>
                                     <tr>
                                         <th>Date</th>
+                                        <th>Adresse</th>
                                         <th>Client Names</th>
                                         <th>Orders</th>
                                         <th>Actions</th>
@@ -55,6 +56,7 @@ Orders
                                     <tr>
                                         <td>2020</td>
                                         <td>Win 95+</td>
+                                        <td>Win 95+</td>
                                         <td> 4</td>
                                         <td>
                                             <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
@@ -62,6 +64,7 @@ Orders
                                     </tr>
                                     <tr>
                                         <td>2020</td>
+                                        <td>Win 95+</td>
                                         <td>Win 95+</td>
                                         <td>5</td>
                                         <td>
@@ -72,6 +75,7 @@ Orders
                                 <tfoot>
                                     <tr>
                                         <th>Date</th>
+                                        <th>Adresse</th>
                                         <th>Client Names</th>
                                         <th>Orders</th>
                                         <th>Actions</th>

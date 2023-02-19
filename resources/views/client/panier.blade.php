@@ -34,8 +34,8 @@ Panier
                                 <th>Total</th>
                             </tr>
                         </thead>
-                        @if (Session::has('cart'))
                         <tbody>
+                            @if (Session::has('cart'))
                             @foreach ($products as $product)
                             <tr class="text-center">
                                 <td class="product-remove"><a
@@ -72,9 +72,15 @@ Panier
                                 <td class="total">${{ $product['product_price']*$product['qty'] }}</td>
                             </tr><!-- END TR-->
                             @endforeach
+                            @else
+                            @if (Session::has('status'))
+                            <div class="alert alert-success">
+                                {{ Session::get('status') }}
+                                {{ Session::put('status', null) }}
+                            </div>
+                            @endif
+                            @endif
                         </tbody>
-                        @else
-                        @endif
                     </table>
                 </div>
             </div>

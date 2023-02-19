@@ -46,6 +46,7 @@ Route::get('/supprimerDuPanier/{id}', [ClientController::class, 'supprimerDuPani
 Route::post('/creerCompte', [ClientController::class, 'creerCompte']);
 Route::post('/accederCompte', [ClientController::class, 'accederCompte']);
 Route::get('/logout', [ClientController::class, 'logout']);
+Route::post('/payer', [ClientController::class, 'payer']);
 
 
 Route::get('/admin', [AdminController::class, 'dashboard']);

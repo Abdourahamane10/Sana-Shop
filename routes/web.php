@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ProductController;
 
@@ -80,5 +81,8 @@ Route::get('/deleteProduct/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('/activerProduct/{id}', [ProductController::class, 'activerProduct']);
 Route::get('/desactiverProduct/{id}', [ProductController::class, 'desactiverProduct']);
 Route::get('/selectParCat/{category_name}', [ProductController::class, 'selectParCat']);
+
+
+Route::get('/voirCommandePdf/{id}', [PdfController::class, 'voirPdf']);
 
 //require __DIR__ . '/auth.php';

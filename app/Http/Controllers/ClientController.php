@@ -149,6 +149,11 @@ class ClientController extends Controller
 
     public function orders()
     {
-        return view('admin.orders');
+        $orders = Order::all();
+        $orders->transform(function ($order, $key) {
+            $order->panier = unserialize($order->panier);
+            return $order;
+        });
+        return view('admin.orders')->with('orders', $orders);
     }
 }

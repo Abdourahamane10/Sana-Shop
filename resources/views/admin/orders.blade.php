@@ -42,6 +42,12 @@ Orders
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            @if (Session::has('error'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('error') }}
+                                {{ Session::put('error', null) }}
+                            </div>
+                            @endif
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -53,24 +59,20 @@ Orders
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($orders as $order)
                                     <tr>
-                                        <td>2020</td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
+                                        <td>{{ $order->created_at }}</td>
+                                        <td>{{ $order->adresse }}</td>
+                                        <td>{{ $order->names }}</td>
+                                        <td>@foreach ($order->panier->items as $item)
+                                            {{ $item['product_name'].' ,' }}
+                                            @endforeach</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
+                                            <a href="{{ url('/voirCommandePdf/'.$order->id) }}"
+                                                class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2020</td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

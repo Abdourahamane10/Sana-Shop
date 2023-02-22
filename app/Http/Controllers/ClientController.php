@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Mail\SendMail;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Category;
@@ -10,6 +11,7 @@ use App\Models\Client;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
@@ -57,13 +59,26 @@ class ClientController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
 
+        $payer_id = time();
+
         $order = new Order();
         $order->names = $request->input('name');
         $order->adresse = $request->input('address');
         $order->panier = serialize($cart);
+        $order->payer_id = $payer_id;
         $order->save();
 
         Session::forget('cart');
+
+        $orders = Order::where('payer_id', '=', $payer_id)->get();
+
+        $orders->transform(function ($order, $key) {
+            $order->panier = unserialize($order->panier);
+            return $order;
+        });
+
+        $email = Session::get('client')->email;
+        Mail::to($email)->send(new SendMail($orders));
 
         return redirect('/panier')->with('status', 'Votre commande a été effectué avec succès !!');
     }

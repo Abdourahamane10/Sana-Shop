@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ClientController extends Controller
 {
@@ -59,9 +61,25 @@ class ClientController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
 
-        $payer_id = time();
+        Stripe::setApiKey('sk_test_51MekMrHkk479vxUpq550Y5p8Ho39WAYy2CNdQbhAWZxTXbXfPtQUZmpDV82P7WDwDPzw2JD7dslEG2j5jVP9ag9s00SudP1DXM');
+
+        try {
+
+            $charge = Charge::create(array(
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), // obtainded with Stripe.js
+                "description" => "Test Charge"
+            ));
+        } catch (\Exception $e) {
+            Session::put('error', $e->getMessage());
+            return redirect('/paiement');
+        }
 
         $order = new Order();
+
+        $payer_id = time();
+
         $order->names = $request->input('name');
         $order->adresse = $request->input('address');
         $order->panier = serialize($cart);

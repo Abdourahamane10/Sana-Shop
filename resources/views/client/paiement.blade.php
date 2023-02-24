@@ -32,7 +32,13 @@ Paiement
                     </ul>
                 </div>
                 @endif
-                <form action="{{ url('/payer') }}" method="POST" class="billing-form">
+                @if (Session::has('error'))
+                <div class="alert alert-danger">
+                    {{ Sessio::get('error') }}
+                    {{ Session::put('error', null) }}
+                </div>
+                @endif
+                <form action="{{ url('/payer') }}" method="POST" class="billing-form" id="checkout-form">
                     {{ csrf_field() }}
                     <h3 class="mb-4 billing-heading">Billing Details</h3>
                     <div class="row align-items-end">
@@ -48,7 +54,7 @@ Paiement
                                 <input type="text" class="form-control" name="address">
                             </div>
                         </div>
-                        {{--<div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="lastname">Name on Card</label>
                                 <input type="text" class="form-control" id="card-name" name="card_name">
@@ -77,7 +83,7 @@ Paiement
                                 <label for="lastname">CVC</label>
                                 <input type="text" id="card-cvc" class="form-control">
                             </div>
-                        </div>--}}
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Buy Now">
@@ -119,6 +125,8 @@ Paiement
 @endsection
 
 @section('scripts')
+<script src="https://js.stripe.com/v2/"></script>
+<script src="src/js/checkout.js"></script>
 <script>
     $(document).ready(function(){
 

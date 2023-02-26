@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="text-center p-t-90">
-                        <a class="txt1" href="{{ url('/login') }}">
+                        <a class="txt1" href="{{ url('/login1') }}">
                             Avez-vous un compte ? Connectez-vous
                         </a>
                     </div>

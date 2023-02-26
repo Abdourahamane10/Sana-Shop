@@ -40,7 +40,7 @@
                 @if (Session::has('client'))
                 <li class="nav-item active"><a href="{{ url('logout') }}" class="nav-link">Logout</a></li>
                 @else
-                <li class="nav-item active"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+                <li class="nav-item active"><a href="{{ url('login1') }}" class="nav-link">Login</a></li>
                 @endif
 
             </ul>
